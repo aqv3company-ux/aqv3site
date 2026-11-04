@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AQV3 Company — sites, sistemas e atendimento com IA</title>
+<meta name="description" content="A AQV3 Company cria sites para lojas, sistemas de gestão sob medida, atendentes de IA no WhatsApp e automações para pequenos negócios.">
+<meta property="og:title" content="AQV3 Company">
+<meta property="og:description" content="Sites, sistemas sob medida e atendimento com IA no WhatsApp para pequenos negócios.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0B1F18">
+<meta property="og:image" content="og-image.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B1F18;
+  --bg-deep:#061410;
+  --surface:#12291F;
+  --line:#21402F;
+  --text:#F3EBD3;
+  --muted:#A3B2A6;
+  --signal:#EBCB7A;
+  --signal-ink:#0B1F18;
+  --copper:#C4741C;
+  --ok:#7FD39B;
+  --radius-lg:22px;
+  --radius-sm:10px;
+  --wrap:1120px;
+  --display:"Cormorant Garamond",Georgia,serif;
+  --body:"Figtree",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1.0625rem/1.6 var(--body);-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--signal);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.02;margin:0;letter-spacing:-.005em}
+p{margin:0}
+.skip{position:absolute;left:-999px}
+.skip:focus{left:16px;top:16px;background:var(--signal);color:var(--signal-ink);padding:8px 14px;z-index:10}
+
+/* Topo */
+.top{position:sticky;top:0;z-index:5;background:rgba(11,31,24,.86);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+.top.scrolled{border-color:var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.brand{display:flex;align-items:baseline;gap:8px;text-decoration:none;white-space:nowrap}
+.brand .mark{font:500 1.75rem/1 var(--display);letter-spacing:.04em}
+.brand .mark .g{color:var(--signal)}.brand .mark .c{color:var(--copper)}
+.brand .sub{font:500 1rem var(--display);color:var(--copper)}
+footer .mark{font-family:var(--display)}
+.nav{display:flex;gap:28px;align-items:center}
+.nav a{text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem}
+.nav a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font:600 1rem var(--body);padding:13px 22px;border-radius:999px;border:0;cursor:pointer;transition:transform .15s, background .15s}
+.btn-signal{background:var(--signal);color:var(--signal-ink)}
+.btn-signal:hover{background:#F3D995}
+.btn-ghost{color:var(--text);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--muted)}
+.btn:active{transform:translateY(1px)}
+.btn svg{width:18px;height:18px}
+.nav .btn{padding:9px 16px;font-size:.92rem;color:var(--signal-ink)}
+@media (max-width:760px){.nav a:not(.btn){display:none}}
+
+/* Hero */
+.hero{padding:72px 0 96px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(42,82,64,.55),transparent 70%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.9rem,6.6vw,5.2rem);font-weight:600;max-width:12ch}
+.hero .lead{margin-top:24px;font-size:1.2rem;color:var(--muted);max-width:44ch}
+.hero .actions{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
+.hero .note{margin-top:28px;display:flex;align-items:center;gap:10px;color:var(--muted);font-size:.95rem}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(127,211,154,.18);flex:none}
+
+/* Telefone com conversa */
+.phone{justify-self:center;width:min(360px,100%);background:var(--bg-deep);border:1px solid var(--line);border-radius:34px;padding:14px;box-shadow:0 40px 80px -30px rgba(0,0,0,.6)}
+.phone-head{display:flex;align-items:center;gap:12px;padding:10px 12px 14px;border-bottom:1px solid var(--line)}
+.avatar{width:40px;height:40px;border-radius:50%;background:var(--copper);color:var(--text);display:grid;place-items:center;font:700 1.1rem var(--display)}
+.phone-head strong{display:block;font-size:.98rem}
+.phone-head span{font-size:.82rem;color:var(--ok)}
+.chat{display:flex;flex-direction:column;gap:10px;padding:18px 6px 8px;min-height:380px}
+.msg{max-width:84%;padding:10px 14px;border-radius:16px;font-size:.93rem;line-height:1.45}
+.msg.in{align-self:flex-start;background:var(--surface);border-bottom-left-radius:4px}
+.msg.out{align-self:flex-end;background:#1E3D2F;border-bottom-right-radius:4px}
+.msg time{display:block;margin-top:4px;font-size:.72rem;color:var(--muted);text-align:right}
+.msg.bot{border-left:3px solid var(--copper)}
+.typing{align-self:flex-start;background:var(--surface);border-radius:16px;padding:12px 16px;display:flex;gap:5px}
+.typing i{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:blink 1.1s infinite}
+.typing i:nth-child(2){animation-delay:.18s}.typing i:nth-child(3){animation-delay:.36s}
+@keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
+.js .chat .msg,.js .chat .typing{display:none}
+.js .chat .show{display:block}
+.js .chat .typing.show{display:flex}
+.chat .show{animation:pop .3s ease-out}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.caption{margin-top:14px;text-align:center;color:var(--muted);font-size:.85rem}
+
+@media (max-width:900px){
+  .hero{padding:48px 0 72px}
+  .hero .wrap{grid-template-columns:1fr;gap:48px}
+}
+
+/* Seções */
+section{padding:96px 0}
+.sec-head{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:end;margin-bottom:56px}
+.sec-head h2{font-size:clamp(2.3rem,4.4vw,3.4rem)}
+.sec-head p{color:var(--muted);max-width:46ch}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr;margin-bottom:40px}section{padding:72px 0}}
+
+/* Serviços */
+.services{border-top:1px solid var(--line)}
+.svc{display:grid;grid-template-columns:72px 1fr 1.1fr;gap:32px;padding:36px 0;border-bottom:1px solid var(--line);align-items:start}
+.svc .ico{width:56px;height:56px;border-radius:16px;background:var(--surface);display:grid;place-items:center;color:var(--copper)}
+.svc .ico svg{width:28px;height:28px}
+.svc h3{font-size:1.95rem}
+.svc .for{margin-top:8px;color:var(--muted);font-size:.95rem}
+.svc ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.svc li{position:relative;padding-left:22px;color:#D5D9C8}
+.svc li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:2px;background:var(--copper)}
+@media (max-width:760px){.svc{grid-template-columns:1fr;gap:16px;padding:28px 0}}
+
+/* Exemplos */
+.work{background:var(--bg-deep)}
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.case{background:var(--surface);border-radius:var(--radius-lg);padding:28px;display:flex;flex-direction:column;gap:14px}
+.case .tag{align-self:flex-start;font-size:.82rem;font-weight:600;color:#E39A4A;background:rgba(196,116,28,.16);padding:4px 10px;border-radius:999px}
+.case h3{font-size:1.6rem;line-height:1.1}
+.case p{color:var(--muted);font-size:.98rem}
+.case .result{margin-top:auto;padding-top:16px;border-top:1px solid var(--line);font-size:.95rem}
+.case .result strong{color:var(--text)}
+@media (max-width:900px){.cases{grid-template-columns:1fr}}
+
+/* Processo */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:s}
+.step{padding:0 24px 0 0;position:relative}
+.step .n{font:600 3.6rem/1 var(--display);color:var(--copper);margin-bottom:18px}
+.step h3{font-size:1.55rem;margin-bottom:8px}
+.step p{color:var(--muted);font-size:.98rem}
+@media (max-width:900px){.steps{grid-template-columns:1fr 1fr;gap:40px 24px}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+
+/* Perguntas */
+.faq{max-width:800px}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:22px 0;font:600 1.15rem var(--body);display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:500 1.6rem/1 var(--display);color:var(--copper);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 0 22px;color:var(--muted);max-width:62ch}
+
+/* Contato */
+.contact{padding:0 0 96px}
+.contact-box{background:var(--signal);color:var(--signal-ink);border-radius:28px;padding:64px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+.contact-box h2{font-size:clamp(2.3rem,4.8vw,3.6rem);font-weight:700}
+.contact-box p{margin-top:16px;font-size:1.1rem;max-width:40ch}
+.contact-links{display:grid;gap:12px}
+.contact-links a{display:flex;align-items:center;gap:14px;text-decoration:none;background:var(--signal-ink);color:var(--text);padding:16px 20px;border-radius:16px;font-weight:600}
+.contact-links a:hover{background:#163428}
+.contact-links svg{width:22px;height:22px;flex:none}
+.contact-links small{display:block;font-weight:400;opacity:.75;font-size:.85rem}
+@media (max-width:760px){.contact-box{grid-template-columns:1fr;padding:36px 24px;border-radius:22px}}
+
+footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="AQV3 Company, início">
+      <span class="mark"><span class="g">A</span><span class="c">Q</span><span class="g">V</span><span class="c">3</span></span><span class="sub">Company</span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#servicos">Serviços</a>
+      <a href="#exemplos">Exemplos</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a class="btn btn-signal js-wa" href="#contato">Falar no WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Seu negócio atendendo, vendendo e se organizando melhor.</h1>
+        <p class="lead">Criamos sites, sistemas de gestão e atendentes de IA no WhatsApp para lojas, academias e pequenas empresas. Você fala com quem constrói, do primeiro rascunho ao suporte.</p>
+        <div class="actions">
+          <a class="btn btn-signal js-wa" href="#contato">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.3.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
+            Pedir um orçamento
+          </a>
+          <a class="btn btn-ghost" href="#servicos">Ver serviços</a>
+        </div>
+        <p class="note"><span class="dot" aria-hidden="true"></span>Orçamento sem compromisso, resposta no mesmo dia.</p>
+      </div>
+
+      <div>
+        <div class="phone" role="img" aria-label="Exemplo de conversa: cliente pergunta a uma loja se tem legging tamanho M, e o atendente de IA responde com cores, preço e link de compra.">
+          <div class="phone-head" aria-hidden="true">
+            <div class="avatar">L</div>
+            <div><strong>Loja da Bia · Moda fitness</strong><span>online agora</span></div>
+          </div>
+          <div class="chat" id="chat" aria-hidden="true">
+            <div class="msg out">Oi! Tem a legging de cintura alta no M?<time>19:42</time></div>
+            <div class="typing"><i></i><i></i><i></i></div>
+            <div class="msg in bot">Oi! Tem sim 😊 No M temos preta, verde-musgo e vinho. Sai por R$ 89,90.<time>19:42</time></div>
+            <div class="msg in bot">Quer que eu separe uma? Você pode pagar por Pix e retirar amanhã ou receber em casa.<time>19:42</time></div>
+            <div class="msg out">A verde! Pode separar 🙌<time>19:43</time></div>
+            <div class="typing"><i></i><i></i><i></i></div>
+            <div class="msg in bot">Separada! Te mandei o link do Pix. Assim que cair, a loja recebe o pedido com seu nome.<time>19:43</time></div>
+          </div>
+        </div>
+        <p class="caption">Atendente de IA respondendo fora do horário da loja.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>O que fazemos</h2>
+        <p>Quatro frentes, um objetivo: tirar trabalho repetitivo das suas mãos e trazer mais clientes até você.</p>
+      </div>
+
+      <div class="services">
+        <article class="svc">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M10 20v-5h4v5"/></svg></div>
+          <div>
+            <h3>Sites para lojas</h3>
+            <p class="for">Para lojas de roupa, acessórios, restaurantes e prestadores de serviço.</p>
+          </div>
+          <ul>
+            <li>Vitrine com seus produtos, fotos e preços</li>
+            <li>Botão direto para o WhatsApp e Instagram</li>
+            <li>Funciona bem no celular e aparece no Google</li>
+            <li>Você mesmo atualiza produtos e promoções</li>
+          </ul>
+        </article>
+
+        <article class="svc">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.6 7.7L3 21l1.3-4.4A9 9 0 1 1 21 12Z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></svg></div>
+          <div>
+            <h3>Atendente de IA no WhatsApp</h3>
+            <p class="for">Para quem perde cliente porque não dá conta de responder todo mundo.</p>
+          </div>
+          <ul>
+            <li>Responde dúvidas, preços e horários na hora, 24h</li>
+            <li>Agenda aulas, horários e visitas</li>
+            <li>Passa para uma pessoa quando o assunto pede</li>
+            <li>Treinado com as informações do seu negócio</li>
+          </ul>
+        </article>
+
+        <article class="svc">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 16v-3M12 16V8M17 16v-6"/></svg></div>
+          <div>
+            <h3>Sistemas de gestão sob medida</h3>
+            <p class="for">Para empresas que ainda controlam tudo em planilha, papel ou caderno.</p>
+          </div>
+          <ul>
+            <li>Financeiro, estoque, contratos e equipe num lugar só</li>
+            <li>Relatórios prontos, sem montar planilha</li>
+            <li>Acesso pelo celular e pelo computador</li>
+            <li>Cada pessoa vê só o que precisa</li>
+          </ul>
+        </article>
+
+        <article class="svc">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div>
+          <div>
+            <h3>Automações e rastreamento</h3>
+            <p class="for">Para operações com veículos, filas, entregas ou tarefas que se repetem todo dia.</p>
+          </div>
+          <ul>
+            <li>Rastreamento de frota por GPS</li>
+            <li>Senha digital e fila organizada no lugar do papel</li>
+            <li>Integração entre os aplicativos que você já usa</li>
+            <li>Avisos automáticos por WhatsApp e e-mail</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="work" id="exemplos">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Coisas que já colocamos para rodar</h2>
+        <p>Projetos reais, feitos para resolver um problema específico de quem usa no dia a dia.</p>
+      </div>
+      <div class="cases">
+        <article class="case">
+          <span class="tag">Sistema de gestão</span>
+          <h3>Painel de gestão para uma empresa com várias frentes</h3>
+          <p>Financeiro, suprimentos, contratos e documentos separados por área, com acesso por login e permissões para cada pessoa.</p>
+          <p class="result"><strong>Antes:</strong> planilhas soltas. <strong>Agora:</strong> tudo num só lugar.</p>
+        </article>
+        <article class="case">
+          <span class="tag">Automação</span>
+          <h3>Senha digital para fila de caminhões</h3>
+          <p>O motorista recebe a senha no celular, a portaria chama pela tela e a logística acompanha a fila em tempo real.</p>
+          <p class="result"><strong>Antes:</strong> senha de papel. <strong>Agora:</strong> fila visível para todos.</p>
+        </article>
+        <article class="case">
+          <span class="tag">Rastreamento</span>
+          <h3>Rastreamento de frota por GPS</h3>
+          <p>Localização dos veículos, histórico de trajetos e alertas, em parceria com empresa de rastreamento.</p>
+          <p class="result"><strong>Resultado:</strong> o dono sabe onde cada veículo está, a qualquer hora.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-funciona">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Como funciona</h2>
+        <p>Sem contrato confuso e sem sumir depois da entrega.</p>
+      </div>
+      <ol class="steps" style="list-style:none;margin:0;padding:0">
+        <li class="step"><div class="n" aria-hidden="true">1</div><h3>Conversa</h3><p>Você conta como funciona seu negócio e onde está o gargalo. Pode ser pelo WhatsApp mesmo.</p></li>
+        <li class="step"><div class="n" aria-hidden="true">2</div><h3>Proposta</h3><p>Você recebe o que vai ser feito, o prazo e o valor, por escrito, antes de começar.</p></li>
+        <li class="step"><div class="n" aria-hidden="true">3</div><h3>Construção</h3><p>Mostramos versões durante o caminho para você ajustar o que quiser.</p></li>
+        <li class="step"><div class="n" aria-hidden="true">4</div><h3>No ar e suporte</h3><p>Publicamos, ensinamos sua equipe a usar e seguimos disponíveis para ajustes.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="perguntas" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><h2>Perguntas frequentes</h2></div>
+      <div class="faq">
+        <details>
+          <summary>Quanto tempo leva para o site ficar pronto?</summary>
+          <p>Um site de loja costuma ficar pronto em uma a duas semanas, dependendo de quantos produtos e fotos você já tem. Sistemas e automações variam conforme o tamanho; o prazo vem escrito na proposta.</p>
+        </details>
+        <details>
+          <summary>Preciso entender de tecnologia para usar?</summary>
+          <p>Não. Tudo é pensado para quem vai usar no dia a dia, e no final mostramos passo a passo como atualizar produtos, ver relatórios ou ajustar o atendente.</p>
+        </details>
+        <details>
+          <summary>O atendente de IA pode responder algo errado?</summary>
+          <p>Ele responde com base nas informações que você aprova: preços, horários, produtos e regras. Quando a pergunta foge disso, ele avisa o cliente e passa a conversa para alguém da equipe.</p>
+        </details>
+        <details>
+          <summary>Tem mensalidade?</summary>
+          <p>Depende do serviço. Sites têm um valor de criação e uma taxa de hospedagem e suporte. O atendente de IA e os sistemas têm mensalidade porque ficam rodando e recebendo ajustes. Tudo aparece na proposta antes de começar.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contato">
+    <div class="wrap">
+      <div class="contact-box">
+        <div>
+          <h2>Vamos ver o que dá para resolver no seu negócio?</h2>
+          <p>Mande uma mensagem contando o que você precisa. A gente responde com uma ideia e um orçamento, sem compromisso.</p>
+        </div>
+        <div class="contact-links">
+          <a class="js-wa" href="#contato">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.3.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
+            <span>WhatsApp<small class="js-wa-label">(22) 99999-9999</small></span>
+          </a>
+          <a class="js-ig" href="#contato" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            <span>Instagram<small class="js-ig-label">@aqv3company</small></span>
+          </a>
+          <a class="js-mail" href="#contato">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <span>E-mail<small class="js-mail-label">contato@aqv3.com.br</small></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="ano">2026</span> AQV3 Company</span>
+    <span>Sites, sistemas e atendimento com IA</span>
+  </div>
+</footer>
+
+<script>
+/* ===== EDITE AQUI os seus contatos ===== */
+const CONTATO = {
+  whatsapp: "5522997393054",           // DDI + DDD + número, só dígitos
+  whatsappTexto: "(22) 997393054",    // como aparece no site
+  mensagem: "Olá! Vim pelo site da AQV3 Company e quero um orçamento.",
+  instagram: "aqv3.company",            // sem @
+  email: ""
+};
+/* ======================================= */
+
+document.documentElement.classList.add("js");
+const wa = "https://wa.me/" + CONTATO.whatsapp + "?text=" + encodeURIComponent(CONTATO.mensagem);
+document.querySelectorAll(".js-wa").forEach(a => { a.href = wa; a.target = "_blank"; a.rel = "noopener"; });
+document.querySelectorAll(".js-wa-label").forEach(e => e.textContent = CONTATO.whatsappTexto);
+document.querySelectorAll(".js-ig").forEach(a => a.href = "https://instagram.com/" + CONTATO.instagram);
+document.querySelectorAll(".js-ig-label").forEach(e => e.textContent = "@" + CONTATO.instagram);
+document.querySelectorAll(".js-mail").forEach(a => a.href = "mailto:" + CONTATO.email);
+document.querySelectorAll(".js-mail-label").forEach(e => e.textContent = CONTATO.email);
+document.getElementById("ano").textContent = new Date().getFullYear();
+
+const top_ = document.getElementById("top");
+addEventListener("scroll", () => top_.classList.toggle("scrolled", scrollY > 8), { passive: true });
+
+/* Conversa do celular: aparece uma vez, em sequência */
+(function () {
+  const items = [...document.querySelectorAll("#chat > *")];
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) { items.filter(i => !i.classList.contains("typing")).forEach(i => i.classList.add("show")); return; }
+  let t = 500;
+  items.forEach((el, i) => {
+    const isTyping = el.classList.contains("typing");
+    setTimeout(() => {
+      if (i > 0 && items[i - 1].classList.contains("typing")) items[i - 1].classList.remove("show");
+      el.classList.add("show");
+    }, t);
+    t += isTyping ? 1300 : (el.classList.contains("out") ? 1100 : 1400);
+  });
+})();
+</script>
+</body>
+</html>
